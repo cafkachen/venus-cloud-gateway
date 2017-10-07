@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.ClusterIpMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.ClusterIp">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="cluster_id" jdbcType="BIGINT" property="clusterId" />
+    <result column="cluster_name" jdbcType="VARCHAR" property="clusterName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ip, cluster_id, cluster_name, create_time, update_time, is_deleted, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cluster_ip
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cluster_ip
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.xujin.venus.cloud.gw.admin.entity.ClusterIp">
+    insert into cluster_ip (id, ip, cluster_id, 
+      cluster_name, create_time, update_time, 
+      is_deleted, type)
+    values (#{id,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{clusterId,jdbcType=BIGINT}, 
+      #{clusterName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=TINYINT}, #{type,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.ClusterIp">
+    insert into cluster_ip
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="clusterId != null">
+        cluster_id,
+      </if>
+      <if test="clusterName != null">
+        cluster_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="clusterId != null">
+        #{clusterId,jdbcType=BIGINT},
+      </if>
+      <if test="clusterName != null">
+        #{clusterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.ClusterIp">
+    update cluster_ip
+    <set>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="clusterId != null">
+        cluster_id = #{clusterId,jdbcType=BIGINT},
+      </if>
+      <if test="clusterName != null">
+        cluster_name = #{clusterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.xujin.venus.cloud.gw.admin.entity.ClusterIp">
+    update cluster_ip
+    set ip = #{ip,jdbcType=VARCHAR},
+      cluster_id = #{clusterId,jdbcType=BIGINT},
+      cluster_name = #{clusterName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      type = #{type,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.OperateLogMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.OperateLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="request_id" jdbcType="VARCHAR" property="requestId" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="domain_id" jdbcType="INTEGER" property="domainId" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="cost" jdbcType="INTEGER" property="cost" />
+    <result column="result_code" jdbcType="INTEGER" property="resultCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, request_id, uid, ip, domain_id, method, url, memo, cost, result_code, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operate_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from operate_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.xujin.venus.cloud.gw.admin.entity.OperateLog">
+    insert into operate_log (id, request_id, uid, 
+      ip, domain_id, method, 
+      url, memo, cost, result_code, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{requestId,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR}, #{domainId,jdbcType=INTEGER}, #{method,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{cost,jdbcType=INTEGER}, #{resultCode,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.OperateLog">
+    insert into operate_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="requestId != null">
+        request_id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="domainId != null">
+        domain_id,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null">
+        #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=INTEGER},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.OperateLog">
+    update operate_log
+    <set>
+      <if test="requestId != null">
+        request_id = #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="domainId != null">
+        domain_id = #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=INTEGER},
+      </if>
+      <if test="resultCode != null">
+        result_code = #{resultCode,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.xujin.venus.cloud.gw.admin.entity.OperateLog">
+    update operate_log
+    set request_id = #{requestId,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      domain_id = #{domainId,jdbcType=INTEGER},
+      method = #{method,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=INTEGER},
+      result_code = #{resultCode,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

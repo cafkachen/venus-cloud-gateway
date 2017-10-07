@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="MyApp" packages="">
+    <Properties>
+      
+        <Property name="developmentAppender">Console</Property>
+        <!-- <Property name="developmentAppender">ROLLING</Property> -->
+        <Property name="logLevel">info</Property>
+        <Property name="app.instance.name">janus</Property>
+       
+        <Property name="LOG_ACCESS_DIR">/apps/logs/${sys:app.instance.name}</Property>
+      
+         <Property name="LOG_EVENT_DIR">/apps/logs/event/logs/${sys:app.instance.name}</Property>
+         
+        <Property name="LOG_RECEIVER_DIR">/apps/logs/log_receiver/${sys:app.instance.name}</Property>
+        
+        
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %x [%level] [%thread] [%logger{50}] >>> %msg%n" /> 
+        </Console>
+        
+        <RollingRandomAccessFile name="AccessLogFileAppender" fileName="${LOG_ACCESS_DIR}/access.log"
+                                 filePattern="${LOG_ACCESS_DIR}/access.%d{yyyy-MM-dd}.log"
+                                 immediateFlush="false" append="true">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}]\t%x\t[%thread]\t%msg%n" /> 
+            <Policies>
+                  <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+         
+         <RollingRandomAccessFile name="ROLLING" append="true"
+         						 fileName="${LOG_RECEIVER_DIR}/application.log"
+                                 filePattern="${LOG_RECEIVER_DIR}/application.%d{yyyy-MM-dd}.log"
+                                 immediateFlush="false">
+            <PatternLayout>
+                <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %x [%level] [%thread] [%logger{50}] >>> %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+        
+    </Appenders>
+
+    <Loggers>
+        <Root level="info" includeLocation="false">
+            <AppenderRef ref="Console"/>
+             
+        </Root>
+        
+        <AsyncLogger name="org.xujin.venus.cloud.gw.server.monitor.MonitorAccessLog" level="info"
+                     includeLocation="false" additivity="false">
+            <AppenderRef ref="AccessLogFileAppender"/>
+        </AsyncLogger>
+       
+       
+       <!-- 默认的logger -->
+         <AsyncLogger name="" level="${sys:logLevel}"
+                     includeLocation="false" additivity="false">
+            <AppenderRef ref="${sys:developmentAppender}"/>
+        </AsyncLogger>
+        
+       
+    </Loggers>
+</Configuration>

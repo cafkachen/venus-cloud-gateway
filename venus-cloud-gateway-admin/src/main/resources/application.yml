@@ -1,0 +1,31 @@
+spring: 
+  profiles: 
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/janus_admin?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password:
+server: 
+  port: 8080
+  compression: 
+    enabled: true
+    mime-types: 
+      - text/html
+      - text/css
+      - application/x-font-ttf
+      - application/javascript
+      - application/json
+
+mybatis:
+  typeAliasesPackage: org.xujin.venus.cloud.gw.admin.entity
+  mapper-locations:
+  - classpath:mapper/*.xml
+  - classpath:mapper/ex/*.xml
+  
+  
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+  

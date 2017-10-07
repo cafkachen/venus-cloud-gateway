@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >  
+<generatorConfiguration>  
+    <!-- 数据库驱动包位置 -->  
+    <classPathEntry  
+        location="D:\develop\apache-maven-3.5.0\res\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar" />  
+    <context id="context1">  
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+        <!-- 数据库链接URL、用户名、密码 -->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://115.159.74.109:3306/janus_admin" userId="root" password="xj461352520" />  
+        <!-- 生成模型的包名和位置 -->  
+        <javaModelGenerator targetPackage="org.xujin.janus.admin.entity" targetProject="janus-admin/src/main/java" />  
+        <!-- 生成的映射文件报名和位置 -->  
+        <sqlMapGenerator targetPackage="mapper" targetProject="janus-admin/src/main/resources" />  
+        <!-- 生成DAO的包名和位置 -->  
+        <javaClientGenerator targetPackage="org.xujin.janus.admin.mapper" targetProject="janus-admin/src/main/java" type="XMLMAPPER" />  
+        
+        <!-- 要生成的那些表(更改tableName 和domainObjectName 就可以了)  
+        <table schema="janus_admin" tableName="cluster" domainObjectName="Cluster" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>  
+        
+         <table schema="janus_admin" tableName="route_info" domainObjectName="RouteInfo" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>
+        
+          <table tableName="%" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+          </table>  
+        --> 
+        
+         <table schema="janus_admin" tableName="cluster" domainObjectName="Cluster" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>
+        
+        <table schema="janus_admin" tableName="cluster_ip" domainObjectName="ClusterIp" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>
+        
+         <table schema="janus_admin" tableName="domain" domainObjectName="Domain" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>
+        
+         <table schema="janus_admin" tableName="operate_log" domainObjectName="OperateLog" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+        </table>
+        
+        
+       
+    </context>  
+</generatorConfiguration>  

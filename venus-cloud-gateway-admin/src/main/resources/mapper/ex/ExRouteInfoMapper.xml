@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.ex.ExRouteInfoMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="domain_id" jdbcType="INTEGER" property="domainId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="request_method" jdbcType="VARCHAR" property="requestMethod" />
+    <result column="route_service_id" jdbcType="VARCHAR" property="routeServiceId" />
+    <result column="route_service_url" jdbcType="VARCHAR" property="routeServiceUrl" />
+    <result column="route_service_path" jdbcType="VARCHAR" property="routeServicePath" />
+    <result column="route_version" jdbcType="VARCHAR" property="routeVersion" />
+    <result column="wrapper" jdbcType="INTEGER" property="wrapper" />
+    <result column="extconfig" jdbcType="VARCHAR" property="extconfig" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="flag" jdbcType="TINYINT" property="flag" />
+  </resultMap>
+  <sql id="ExBase_Column_List">
+    id, domain_id, type, name, request_url, request_method, route_service_id, route_service_url, 
+    route_service_path, route_version, wrapper, extconfig, create_time, update_time, 
+    is_deleted, create_by, update_by, flag
+  </sql>
+  
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="ExBase_Column_List" />
+    from route_info;
+  </select>
+ 
+ <select id="findByPage" resultMap="BaseResultMap">
+    select
+    <include refid="ExBase_Column_List" />
+    from route_info  where is_deleted=0
+  </select>
+</mapper>

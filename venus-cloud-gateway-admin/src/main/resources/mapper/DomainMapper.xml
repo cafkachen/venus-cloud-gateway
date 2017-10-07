@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.DomainMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.Domain">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alias_name" jdbcType="VARCHAR" property="aliasName" />
+    <result column="cluster_id" jdbcType="BIGINT" property="clusterId" />
+    <result column="bus_id" jdbcType="VARCHAR" property="busId" />
+    <result column="buss_name" jdbcType="VARCHAR" property="bussName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="degree" jdbcType="TINYINT" property="degree" />
+    <result column="sys_admin" jdbcType="VARCHAR" property="sysAdmin" />
+    <result column="tech_admin" jdbcType="VARCHAR" property="techAdmin" />
+    <result column="commit_by" jdbcType="VARCHAR" property="commitBy" />
+    <result column="source" jdbcType="TINYINT" property="source" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, alias_name, cluster_id, bus_id, buss_name, description, type, degree, sys_admin, 
+    tech_admin, commit_by, source, create_time, update_time, is_deleted, status, comments
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from domain
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from domain
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.xujin.venus.cloud.gw.admin.entity.Domain">
+    insert into domain (id, name, alias_name, 
+      cluster_id, bus_id, buss_name, 
+      description, type, degree, 
+      sys_admin, tech_admin, commit_by, 
+      source, create_time, update_time, 
+      is_deleted, status, comments
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{aliasName,jdbcType=VARCHAR}, 
+      #{clusterId,jdbcType=BIGINT}, #{busId,jdbcType=VARCHAR}, #{bussName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{degree,jdbcType=TINYINT}, 
+      #{sysAdmin,jdbcType=VARCHAR}, #{techAdmin,jdbcType=VARCHAR}, #{commitBy,jdbcType=VARCHAR}, 
+      #{source,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{comments,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.Domain">
+    insert into domain
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="aliasName != null">
+        alias_name,
+      </if>
+      <if test="clusterId != null">
+        cluster_id,
+      </if>
+      <if test="busId != null">
+        bus_id,
+      </if>
+      <if test="bussName != null">
+        buss_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="degree != null">
+        degree,
+      </if>
+      <if test="sysAdmin != null">
+        sys_admin,
+      </if>
+      <if test="techAdmin != null">
+        tech_admin,
+      </if>
+      <if test="commitBy != null">
+        commit_by,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null">
+        #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="clusterId != null">
+        #{clusterId,jdbcType=BIGINT},
+      </if>
+      <if test="busId != null">
+        #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="bussName != null">
+        #{bussName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=TINYINT},
+      </if>
+      <if test="sysAdmin != null">
+        #{sysAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="techAdmin != null">
+        #{techAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="commitBy != null">
+        #{commitBy,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.Domain">
+    update domain
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null">
+        alias_name = #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="clusterId != null">
+        cluster_id = #{clusterId,jdbcType=BIGINT},
+      </if>
+      <if test="busId != null">
+        bus_id = #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="bussName != null">
+        buss_name = #{bussName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="degree != null">
+        degree = #{degree,jdbcType=TINYINT},
+      </if>
+      <if test="sysAdmin != null">
+        sys_admin = #{sysAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="techAdmin != null">
+        tech_admin = #{techAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="commitBy != null">
+        commit_by = #{commitBy,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.xujin.venus.cloud.gw.admin.entity.Domain">
+    update domain
+    set name = #{name,jdbcType=VARCHAR},
+      alias_name = #{aliasName,jdbcType=VARCHAR},
+      cluster_id = #{clusterId,jdbcType=BIGINT},
+      bus_id = #{busId,jdbcType=VARCHAR},
+      buss_name = #{bussName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      degree = #{degree,jdbcType=TINYINT},
+      sys_admin = #{sysAdmin,jdbcType=VARCHAR},
+      tech_admin = #{techAdmin,jdbcType=VARCHAR},
+      commit_by = #{commitBy,jdbcType=VARCHAR},
+      source = #{source,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      comments = #{comments,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

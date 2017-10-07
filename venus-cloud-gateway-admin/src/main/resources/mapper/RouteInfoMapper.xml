@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.RouteInfoMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="domain_id" jdbcType="INTEGER" property="domainId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="request_method" jdbcType="VARCHAR" property="requestMethod" />
+    <result column="route_service_id" jdbcType="VARCHAR" property="routeServiceId" />
+    <result column="route_service_url" jdbcType="VARCHAR" property="routeServiceUrl" />
+    <result column="route_service_path" jdbcType="VARCHAR" property="routeServicePath" />
+    <result column="route_version" jdbcType="VARCHAR" property="routeVersion" />
+    <result column="wrapper" jdbcType="INTEGER" property="wrapper" />
+    <result column="extconfig" jdbcType="VARCHAR" property="extconfig" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="flag" jdbcType="TINYINT" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, domain_id, type, name, request_url, request_method, route_service_id, route_service_url, 
+    route_service_path, route_version, wrapper, extconfig, create_time, update_time, 
+    is_deleted, create_by, update_by, flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from route_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    insert into route_info (id, domain_id, type, 
+      name, request_url, request_method, 
+      route_service_id, route_service_url, route_service_path, 
+      route_version, wrapper, extconfig, 
+      create_time, update_time, is_deleted, 
+      create_by, update_by, flag
+      )
+    values (#{id,jdbcType=BIGINT}, #{domainId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{requestUrl,jdbcType=VARCHAR}, #{requestMethod,jdbcType=VARCHAR}, 
+      #{routeServiceId,jdbcType=VARCHAR}, #{routeServiceUrl,jdbcType=VARCHAR}, #{routeServicePath,jdbcType=VARCHAR}, 
+      #{routeVersion,jdbcType=VARCHAR}, #{wrapper,jdbcType=INTEGER}, #{extconfig,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{flag,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    insert into route_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="domainId != null">
+        domain_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="requestUrl != null">
+        request_url,
+      </if>
+      <if test="requestMethod != null">
+        request_method,
+      </if>
+      <if test="routeServiceId != null">
+        route_service_id,
+      </if>
+      <if test="routeServiceUrl != null">
+        route_service_url,
+      </if>
+      <if test="routeServicePath != null">
+        route_service_path,
+      </if>
+      <if test="routeVersion != null">
+        route_version,
+      </if>
+      <if test="wrapper != null">
+        wrapper,
+      </if>
+      <if test="extconfig != null">
+        extconfig,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="domainId != null">
+        #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMethod != null">
+        #{requestMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServiceId != null">
+        #{routeServiceId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServiceUrl != null">
+        #{routeServiceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServicePath != null">
+        #{routeServicePath,jdbcType=VARCHAR},
+      </if>
+      <if test="routeVersion != null">
+        #{routeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapper != null">
+        #{wrapper,jdbcType=INTEGER},
+      </if>
+      <if test="extconfig != null">
+        #{extconfig,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    update route_info
+    <set>
+      <if test="domainId != null">
+        domain_id = #{domainId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMethod != null">
+        request_method = #{requestMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServiceId != null">
+        route_service_id = #{routeServiceId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServiceUrl != null">
+        route_service_url = #{routeServiceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="routeServicePath != null">
+        route_service_path = #{routeServicePath,jdbcType=VARCHAR},
+      </if>
+      <if test="routeVersion != null">
+        route_version = #{routeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapper != null">
+        wrapper = #{wrapper,jdbcType=INTEGER},
+      </if>
+      <if test="extconfig != null">
+        extconfig = #{extconfig,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.xujin.venus.cloud.gw.admin.entity.RouteInfo">
+    update route_info
+    set domain_id = #{domainId,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      request_method = #{requestMethod,jdbcType=VARCHAR},
+      route_service_id = #{routeServiceId,jdbcType=VARCHAR},
+      route_service_url = #{routeServiceUrl,jdbcType=VARCHAR},
+      route_service_path = #{routeServicePath,jdbcType=VARCHAR},
+      route_version = #{routeVersion,jdbcType=VARCHAR},
+      wrapper = #{wrapper,jdbcType=INTEGER},
+      extconfig = #{extconfig,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

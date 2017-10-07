@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xujin.venus.cloud.gw.admin.mapper.ex.ExClusterMapper">
+  <resultMap id="BaseResultMap" type="org.xujin.venus.cloud.gw.admin.entity.Cluster">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alias_name" jdbcType="VARCHAR" property="aliasName" />
+    <result column="bus_id" jdbcType="VARCHAR" property="busId" />
+    <result column="buss_name" jdbcType="VARCHAR" property="bussName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="sys_admin" jdbcType="VARCHAR" property="sysAdmin" />
+    <result column="tech_admin" jdbcType="VARCHAR" property="techAdmin" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="ExBase_Column_List">
+    id, name, alias_name, bus_id, buss_name, description, sys_admin, tech_admin, create_time, 
+    update_time, is_deleted
+  </sql>
+  
+   <select id="findByPage" resultMap="BaseResultMap">
+      select
+    <include refid="ExBase_Column_List" />
+      from cluster  where is_deleted=0
+  </select>
+  
+
+</mapper>
